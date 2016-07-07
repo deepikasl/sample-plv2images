@@ -1,0 +1,5 @@
+jobs:
+  - name: plv2-manifest1
+    type: manifest
+    steps:
+      - GET: test-image1
