@@ -1,0 +1,23 @@
+resources:
+  - name: test-image1
+    type: image
+    integration: cock1-hub
+    source:
+      name: "shiphitchcock1/betaci_nod_limitless_pl"
+      isPull: false
+      tag: "deploy.4"
+      
+  - name: test-image2
+    type: image
+    integration: cock1-hub
+    source:
+      name: "shiphitchcock1/betaci_nod_limitless_pl"
+      isPull: false
+      tag: "deploy.5"
+  
+  - name: test-ecscluster1
+    type: ecsCluster
+    integration: varsha-ecscluster
+    source:
+      name : "testCL" #name of the cluster we are deploying
+      region: "us-west-2"
