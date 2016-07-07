@@ -6,38 +6,16 @@ language: node_js
 node_js:
   - 0.12
 
-env:
-  global:
-    - FOO=FUBU
-    - FO1=BUBU
-    - BOO=GUBU
-
-  matrix:
-    - M1=ONE
-    - M2=TWO
-
 build:
-  pre_ci:
-    - echo "Good morning 2"
-    - echo "testing"
-
-  pre_ci_boot:
-    image_name: kanthchandra/sample_node
-    image_tag: latest
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
-
   ci:
     - ps -eax
     - ls -al
 
   post_ci:
-    - echo "post ci stage. Finished ! yo"
+    - docker build -t="varshaarun/pipeline:$BRANCH.$BUILD_NUMBER" .
+    - docker push "varshaarun/pipeline:$BRANCH.$BUILD_NUMBER"
 
-  smoke_test:
-    - sudo ls /
-
-deploy:
-  pre_build:
-    - ls
-    - ls -al
+integrations:
+  hub:
+    - integrationName: "docker-varshaarun"
+      type: docker
