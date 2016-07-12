@@ -12,10 +12,10 @@ build:
     - ls -al
 
   post_ci:
-    - docker build -t="varshaarun/pipeline:$BRANCH.$BUILD_NUMBER" .
-    - docker push "varshaarun/pipeline:$BRANCH.$BUILD_NUMBER"
+    - docker build -t="deepikasl/pipeline-docker:$BRANCH.$BUILD_NUMBER" .
+    - docker push "deepikasl/pipeline-docker:$BRANCH.$BUILD_NUMBER"
 
 integrations:
   hub:
-    - integrationName: "docker-varshaarun"
+    - integrationName: "deepika-docker"
       type: docker
